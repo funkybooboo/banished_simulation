@@ -49,7 +49,7 @@ class Town:
             starving_population = len(self.population) // 2
             self.population = self.population[:-starving_population]
 
-        if self.resources["Food"].quantity < 0 and self.insurance_fund > 0:
+        if self.resources["Food"].quantity < 0 < self.insurance_fund:
             self.insurance_fund -= 100
 
         self.handle_events()
@@ -148,7 +148,7 @@ decision_maker = DecisionMaker(epsilon=0.1)
 mean_years, std_dev = town.monte_carlo_simulation(num_trials=100)
 print(f"Mean Years Survived: {mean_years}, Std Dev: {std_dev}")
 
-# Epsilon-Greedy decision making example
+# Epsilon-Greedy decision-making example
 options = [{'action': 'Build Farm', 'value': 10}, {'action': 'Build Hospital', 'value': 8}, {'action': 'Build School', 'value': 5}]
 chosen_action = decision_maker.choose_action(options)
 print(f"Chosen action: {chosen_action['action']}")
